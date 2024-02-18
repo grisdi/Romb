@@ -16,8 +16,14 @@ class Controller:
             side_a = float(self.view.entry_a.get())
             height_h = float(self.view.entry_h.get())
 
-            if side_a <= 0 and height_h <= 0:
+            if side_a < 0 and height_h < 0:
                 self.show_error("Küljepikkus ja kõrgus peavad olema positiivsed!")
+                return
+            elif side_a <= 0:
+                self.show_error("Küljepikkus peab olema positiivne!")
+                return
+            elif height_h <= 0:
+                self.show_error("Kõrgus peab olema positiivne!")
                 return
             elif height_h > side_a:
                 self.show_error("Kõrgus ei saa küljepikkusest suurem olla!")
